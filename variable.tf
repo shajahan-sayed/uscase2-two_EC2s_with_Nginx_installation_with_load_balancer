@@ -1,10 +1,12 @@
 variable "aws_region" {
   description = "aws region to deploy resource"
   type = string
+  default = "ap-south-1"
 }
 variable "instnace_type" {
   description = "attaching instance type"
   type = string
+  default = "t2.micro"
 }
 variable "ami_id" {
   description = "attaching ami id "
@@ -13,6 +15,7 @@ variable "ami_id" {
 variable "key_name" {
   description = "attaching key name"
   type = string
+  default = "auto1"
 }
 variable "vpc_Nginx2_cidr" {
   description = "cidr block for vpc"
