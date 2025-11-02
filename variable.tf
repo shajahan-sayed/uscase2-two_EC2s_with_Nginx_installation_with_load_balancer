@@ -1,6 +1,6 @@
 variable "aws_region" {
   description = "aws region to deploy resource"
-  type = string 
+  type = string
 }
 variable "instnace_type" {
   description = "attaching instance type"
