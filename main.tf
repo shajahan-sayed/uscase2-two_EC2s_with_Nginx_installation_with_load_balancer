@@ -159,7 +159,7 @@ resource "aws_lb_listener" "Nginx_listener" {
 
  default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.Nginx_alb.arn
+    target_group_arn = aws_lb_target_group.Nginx_target.arn
   }
 }
 
