@@ -132,8 +132,10 @@ resource "aws_lb" "Nginx_alb" {
  name  = "Nginx-alb"
  load_balancer_type = "application"
  security_groups = [aws_security_group.Nginx2_sg2.id]
- subnets = [ aws_subnet.Nginx2_public_subnet1,
-             aws_subnet.Nginx2_public_subnet2]
+ subnets = [ 
+      aws_subnet.Nginx2_public_subnet1.id
+      aws_subnet.Nginx2_public_subnet2.id
+     ]
  tags = {
   Name = "Nginx_alb"
  }
