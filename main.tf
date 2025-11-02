@@ -159,18 +159,18 @@ resource "aws_lb_listener" "Nginx_listener" {
 
  default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.tg.arn
+    target_group_arn = aws_lb_target_group.Nginx_alb.arn
   }
 }
 
 #target group attachment to ec2
 resource "aws_lb_target_group_attachment" "balu_attach" {
- target_group_arn = aws_lb_target_group.Nginx_alb.arn
+ target_group_arn = aws_lb_target_group.Nginx_target.arn
  target_id = aws_instance.Nginx_balu.id
  port = 80
 }
 resource "aws_lb_target_group_attachment" "shajahan_attach" {
- target_group_arn = aws_lb_target_group.Nginx_alb.arn
+ target_group_arn = aws_lb_target_group.Nginx_target.arn
  target_id = aws_instance.Nginx_shajahan.id
  port = 80
 }
