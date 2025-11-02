@@ -51,7 +51,7 @@ resource "aws_internet_gateway" "Nginx2_igw" {
 
 resource "aws_route" "Nginx2_route" {
  gateway_id = aws_internet_gateway.Nginx2_igw.id
- cidr_block = "0.0.0.0/0"
+ destination_cidr_block = "0.0.0.0/0"
  route_table_id = aws_route_table.Nginx2_route_table.id
 }
 
@@ -101,7 +101,7 @@ resource "aws_security_group" "Nginx2_sg2" {
 
 #creating EC2 instances
 resource "aws_instance" "Nginx_balu" {
- ami_id = var.ami_id
+ ami = var.ami_id
  instance_type = var.instance_type
  key_name = var.key_name
  subnet_id = aws_subnet.Nginx2_public_subnet1.id
@@ -114,7 +114,7 @@ resource "aws_instance" "Nginx_balu" {
  }
 }
 resource "aws_instance" "Nginx_shajahan" {
- ami_id = var.ami_id
+ ami = var.ami_id
  instance_type = var.instance_type
  key_name = var.key_name
  subnet_id = aws_subnet.Nginx2_public_subnet2.id
@@ -129,7 +129,7 @@ resource "aws_instance" "Nginx_shajahan" {
 
 #creating Load balancer (Application Load balancer)
 resource "aws_lb" "Nginx_alb" {
- name  = "Nginx_alb"
+ name  = "Nginx-alb"
  load_balancer_type = "application"
  security_groups = [aws_security_group.Nginx2_sg2.id]
  subnets = [ aws_subnet.Nginx2_public_subnet1,
