@@ -110,7 +110,7 @@ resource "aws_instance" "Nginx_balu" {
    user_data = <<-EOF
               #!/bin/bash
               sudo apt install nginx -y
-              echo "Hi shajahan welcome to Nginx" > /usr/share/nginx/html/index.html
+              echo "Hi shajahan welcome to Nginx" | sudo tee /usr/share/nginx/html/index.html
               systemctl enable nginx
               systemctl start nginx
               EOF
@@ -129,7 +129,7 @@ resource "aws_instance" "Nginx_shajahan" {
   user_data = <<-EOF
               #!/bin/bash
               sudo apt install nginx -y
-              echo "Hi shajahan welcome to Nginx" > /usr/share/nginx/html/index.html
+              echo "Hi shajahan welcome to Nginx" | sudo tee /usr/share/nginx/html/index.html
               systemctl enable nginx
               systemctl start nginx
               EOF
