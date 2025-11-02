@@ -49,7 +49,7 @@ resource "aws_internet_gateway" "Nginx2_igw" {
 
 #create route to attach internet gateway
 
-resource "route" "Nginx2_route" {
+resource "aws_route" "Nginx2_route" {
  gateway_id = aws_internet_gateway.Nginx2_igw.id
  cidr_block = "0.0.0.0/0"
 }
