@@ -147,6 +147,7 @@ resource "aws_lb_target_group" "Nginx_target" {
  tags = {
   Name = "Nginx_target"
  }
+}
 
 #listerner
 resource "aws_lb_listener" "Nginx_listener" {
