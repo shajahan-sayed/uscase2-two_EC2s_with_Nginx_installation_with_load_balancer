@@ -107,7 +107,13 @@ resource "aws_instance" "Nginx_balu" {
  subnet_id = aws_subnet.Nginx2_public_subnet1.id
  vpc_security_group_ids = [aws_security_group.Nginx2_sg2.id]
 
- user_data = file("${path.module}/balu.sh")
+   user_data = <<-EOF
+              #!/bin/bash
+              sudo amazon-linux-extras install nginx1 -y
+              echo "Hi shajahan welcome to Nginx" > /usr/share/nginx/html/index.html
+              systemctl enable nginx
+              systemctl start nginx
+              EOF
 
  tags = {
   Name = "Nginx_balu"
@@ -120,7 +126,13 @@ resource "aws_instance" "Nginx_shajahan" {
  subnet_id = aws_subnet.Nginx2_public_subnet2.id
  vpc_security_group_ids = [aws_security_group.Nginx2_sg2.id]
 
- user_data = file("${path.module}/shajahan.sh")
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo amazon-linux-extras install nginx1 -y
+              echo "Hi shajahan welcome to Nginx" > /usr/share/nginx/html/index.html
+              systemctl enable nginx
+              systemctl start nginx
+              EOF
 
  tags = {
   Name = "Nginx_shajahan"
