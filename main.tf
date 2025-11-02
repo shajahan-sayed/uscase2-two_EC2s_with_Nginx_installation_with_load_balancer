@@ -11,7 +11,7 @@ resource "aws_vpc" "Nginx2" {
 resource "aws_subnet" "Nginx2_public_subnet1" {
  vpc_id = aws_vpc.Nginx2.id
  cidr_block = var.Nginx2_cidr_pub1
- availabiilty_zone = "ap-south-1a"
+ availability_zone = "ap-south-1a"
  map_public_ip_on_launch = true
 
  tags = {
@@ -52,6 +52,7 @@ resource "aws_internet_gateway" "Nginx2_igw" {
 resource "aws_route" "Nginx2_route" {
  gateway_id = aws_internet_gateway.Nginx2_igw.id
  cidr_block = "0.0.0.0/0"
+ route_table_id = aws_route_table.Nginx2_route_table.id
 }
 
 #associate route table 
@@ -103,8 +104,8 @@ resource "aws_instance" "Nginx_balu" {
  ami_id = var.ami_id
  instance_type = var.instance_type
  key_name = var.key_name
- subnet_id = aws_subnet.Nginx2_public_subnet1
- vpc_security_group_id = [aws_security_group.Nginx2_sg2.id]
+ subnet_id = aws_subnet.Nginx2_public_subnet1.id
+ vpc_security_group_ids = [aws_security_group.Nginx2_sg2.id]
 
  user_data = file("${path.module}/balu.sh")
 
@@ -116,8 +117,8 @@ resource "aws_instance" "Nginx_shajahan" {
  ami_id = var.ami_id
  instance_type = var.instance_type
  key_name = var.key_name
- subnet_id = aws_subnet.Nginx2_public_subnet2
- vpc_security_group_id = [aws_security_group.Nginx2_sg2.id]
+ subnet_id = aws_subnet.Nginx2_public_subnet2.id
+ vpc_security_group_ids = [aws_security_group.Nginx2_sg2.id]
 
  user_data = file("${path.module}/shajahan.sh")
 
@@ -140,7 +141,7 @@ resource "aws_lb" "Nginx_alb" {
 
 #creating target group 
 resource "aws_lb_target_group" "Nginx_target" {
- name = "Nginx_target"
+ name = "Nginx-target"
  port = 80
  protocol = "HTTP"
  vpc_id =  aws_vpc.Nginx2.id
