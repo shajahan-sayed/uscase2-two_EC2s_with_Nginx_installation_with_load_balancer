@@ -105,6 +105,8 @@ resource "aws_instance" "Nginx_balu" {
  subnet_id = aws_subnet.Nginx2_public_subnet1
  vpc_security_group_id = [aws_security_group.Nginx2_sg2.id]
 
+ user_data = file("${path.module}/balu.sh")
+
  tags = {
   Name = "Nginx_balu"
  }
@@ -115,6 +117,8 @@ resource "aws_instance" "Nginx_shajahan" {
  key_name = var.key_name
  subnet_id = aws_subnet.Nginx2_public_subnet2
  vpc_security_group_id = [aws_security_group.Nginx2_sg2.id]
+
+ user_data = file("${path.module}/shajahan.sh")
 
  tags = {
   Name = "Nginx_shajahan"
