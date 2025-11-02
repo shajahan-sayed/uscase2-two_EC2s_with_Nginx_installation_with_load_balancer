@@ -59,7 +59,7 @@ resource "aws_route_table_association" "Nginx2_pub1_asso" {
  subnet_id = aws_subnet.Nginx2_public_subnet1.id
  route_table_id = aws_route_table.Nginx2_route_table.id
 }
-resource "aws_route_table_association" "Nginx2_pub1_asso" {
+resource "aws_route_table_association" "Nginx2_pub2_asso" {
  subnet_id = aws_subnet.Nginx2_public_subnet2.id
  route_table_id = aws_route_table.Nginx2_route_table.id
 }
@@ -127,7 +127,7 @@ resource "aws_instance" "Nginx_shajahan" {
 }
 
 #creating Load balancer (Application Load balancer)
-resourec "aws_lb" "Nginx_alb" {
+resource "aws_lb" "Nginx_alb" {
  name  = "Nginx_alb"
  load_balancer_type = "application"
  security_groups = [aws_security_group.Nginx2_sg2.id]
