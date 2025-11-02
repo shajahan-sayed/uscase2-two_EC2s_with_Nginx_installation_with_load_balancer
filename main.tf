@@ -109,7 +109,7 @@ resource "aws_instance" "Nginx_balu" {
 
    user_data = <<-EOF
               #!/bin/bash
-              sudo amazon-linux-extras install nginx1 -y
+              sudo apt install nginx -y
               echo "Hi shajahan welcome to Nginx" > /usr/share/nginx/html/index.html
               systemctl enable nginx
               systemctl start nginx
@@ -128,7 +128,7 @@ resource "aws_instance" "Nginx_shajahan" {
 
   user_data = <<-EOF
               #!/bin/bash
-              sudo amazon-linux-extras install nginx1 -y
+              sudo apt install nginx -y
               echo "Hi shajahan welcome to Nginx" > /usr/share/nginx/html/index.html
               systemctl enable nginx
               systemctl start nginx
