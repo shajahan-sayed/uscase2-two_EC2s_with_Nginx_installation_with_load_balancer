@@ -130,7 +130,7 @@ resourec "aws_lb" "Nginx_alb" {
  name  = "Nginx_alb"
  load_balancer_type = "application"
  security_groups = [aws_security_group.Nginx2_sg2.id]
- subnets = [ aws_subnet.Nginx2_public_subnet1
+ subnets = [ aws_subnet.Nginx2_public_subnet1,
              aws_subnet.Nginx2_public_subnet2]
  tags = {
   Name = "Nginx_alb"
@@ -139,7 +139,7 @@ resourec "aws_lb" "Nginx_alb" {
 
 #creating target group 
 resource "aws_lb_target_group" "Nginx_target" {
- name = "Nginx_
+ name = "Nginx_target"
  port = 80
  protocol = "HTTP"
  vpc_id =  aws_vpc.Nginx2.id
