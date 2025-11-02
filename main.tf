@@ -5,6 +5,7 @@ resource "aws_vpc" "Nginx2" {
  tags = { 
   Name = "Nginx2"
 }
+}
 
 #creating public subnet
 resource "aws_subnet" "Nginx2_public_subnet1" {
