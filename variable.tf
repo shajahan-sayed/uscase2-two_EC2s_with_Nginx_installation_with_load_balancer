@@ -3,7 +3,7 @@ variable "aws_region" {
   type = string
   default = "ap-south-1"
 }
-variable "instnace_type" {
+variable "instance_type" {
   description = "attaching instance type"
   type = string
   default = "t2.micro"
